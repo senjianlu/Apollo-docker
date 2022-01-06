@@ -44,5 +44,5 @@ RUN sed -i 's#jdbc:mysql://localhost:3306/ApolloConfigDB?characterEncoding=utf8&
 RUN sed -i 's#jdbc:mysql://localhost:3306/ApolloPortalDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai#$APOLLO_PORTAL_DB_JDBC#' demo.sh
 
 # 启动命令
-ENTRYPOINT ["./usr/local/apollo-build-scripts/demo.sh", "start"]
+ENTRYPOINT ["/bin/bash", "/usr/local/apollo-build-scripts/demo.sh"]
 CMD [""]
