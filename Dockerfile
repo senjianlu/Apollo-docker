@@ -42,3 +42,7 @@ RUN git clone https://github.com/nobodyiam/apollo-build-scripts
 WORKDIR /usr/local/apollo-build-scripts/
 RUN sed -i 's#jdbc:mysql://localhost:3306/ApolloConfigDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai#$APOLLO_CONFIG_DB_JDBC#' demo.sh
 RUN sed -i 's#jdbc:mysql://localhost:3306/ApolloPortalDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai#$APOLLO_PORTAL_DB_JDBC#' demo.sh
+
+# 启动命令
+ENTRYPOINT ["/bin/bash", "/usr/local/apollo-build-scripts/demo.sh", "start", "; sleep infinity"]
+CMD [""]
