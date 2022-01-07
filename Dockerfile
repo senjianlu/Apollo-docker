@@ -43,6 +43,9 @@ WORKDIR /usr/local/apollo-build-scripts/
 RUN sed -i 's#jdbc:mysql://localhost:3306/ApolloConfigDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai#$APOLLO_CONFIG_DB_JDBC#' demo.sh
 RUN sed -i 's#jdbc:mysql://localhost:3306/ApolloPortalDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai#$APOLLO_PORTAL_DB_JDBC#' demo.sh
 
+# 创建启动脚本
+RUN echo "/bin/bash /usr/local/apollo-build-scripts/demo.sh start && tail -f /dev/null" > start.sh
+
 # 启动命令
-ENTRYPOINT ["/bin/bash", "/usr/local/apollo-build-scripts/demo.sh", "start"]
-CMD ["while true; do sleep 30; done;"]
+ENTRYPOINT ["/bin/bash", "start.sh"]
+CMD [""]
